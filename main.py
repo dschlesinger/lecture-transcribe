@@ -103,4 +103,6 @@ if __name__ == "__main__":
 
   for file in os.listdir('audio'):
 
-    main(file)
+    if file.split('.')[-1] == 'mp3':
+
+      main(file)
