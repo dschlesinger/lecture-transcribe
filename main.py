@@ -83,7 +83,7 @@ def main():
               'location': {
                   'index': 1,  # Index 1 places the text at the beginning
               },
-              'text': text_to_insert
+              'text': text_to_insert['text']
           }
       }
   ]
