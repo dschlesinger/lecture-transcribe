@@ -61,7 +61,7 @@ def main():
 
   # Metadata for the new document
   file_metadata = {
-      'name': 'Testing',
+      'name': file_name,
       'mimeType': 'application/vnd.google-apps.document',
       'parents': [folder_id]
   }
