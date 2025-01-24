@@ -13,22 +13,27 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Check if file provided is valid
-file_path = sys.argv[1]
+def check_path(file_path) -> str:
 
-path = os.getenv('AUDIO_PATH') + '/' + file_path
+  path = os.getenv('AUDIO_PATH') + '/' + file_path
 
-print(path)
+  print(path)
 
-if not os.path.exists(path):
+  if not os.path.exists(path):
 
-  raise ValueError(f'File {file_path} not found')
+    raise ValueError(f'File {file_path} not found')
+  
+  return path
 
 # Load Model
 model = whisper.load_model("tiny")
 
 SCOPES = ['https://www.googleapis.com/auth/docs', 'https://www.googleapis.com/auth/drive']
 
-def main():
+def main(file_name: str):
+
+  path = check_path(file_name)
+
   """Shows basic usage of the Drive v3 API.
   Prints the names and ids of the first 10 files the user has access to.
   """
@@ -95,4 +100,7 @@ def main():
   ).execute()
 
 if __name__ == "__main__":
-  main()
+
+  for file in os.listdir('audio'):
+
+    main(file)
