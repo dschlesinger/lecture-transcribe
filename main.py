@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, json
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -68,11 +68,13 @@ def main(file_name: str):
 
   folder_id = os.getenv('FOLDER_ID')
 
+  sub_folder = json.loads(os.getenv('SUB_FOLDER_IDS')).get(file_name, None)
+
   # Metadata for the new document
   file_metadata = {
-      'name': file_name,
+      'name': file_name.removesuffix('.mp3'),
       'mimeType': 'application/vnd.google-apps.document',
-      'parents': [folder_id]
+      'parents': [folder_id] + ([sub_folder] if sub_folder else []),
   }
 
   # Create the document
