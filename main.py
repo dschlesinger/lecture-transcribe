@@ -74,7 +74,7 @@ def main(file_name: str):
   file_metadata = {
       'name': file_name.removesuffix('.mp3'),
       'mimeType': 'application/vnd.google-apps.document',
-      'parents': [folder_id] + ([sub_folder] if sub_folder else []),
+      'parents': ([sub_folder] if sub_folder else [folder_id]),
   }
 
   # Create the document
