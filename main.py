@@ -68,7 +68,7 @@ def main(file_name: str):
 
   folder_id = os.getenv('FOLDER_ID')
 
-  sub_folder = json.loads(os.getenv('SUB_FOLDER_IDS')).get(file_name, None)
+  sub_folder = json.loads(os.getenv('SUB_FOLDER_IDS')).get(file_name.split('_')[0], None)
 
   # Metadata for the new document
   file_metadata = {
