@@ -10,7 +10,11 @@ import whisper
 
 from dotenv import load_dotenv
 
-load_dotenv()
+for loc in ['.env', 'env.txt']:
+
+  if load_dotenv(loc):
+
+    break
 
 # Check if file provided is valid
 def check_path(file_path) -> str:
